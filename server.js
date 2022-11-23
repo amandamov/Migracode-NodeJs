@@ -17,7 +17,27 @@ app.get("/", function (request, response) {
   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
+
+
 //START OF YOUR CODE...
+app.get('/quotes', function(request, response) {
+  response.send(quotes)
+});
+
+app.get('/quotes/random', function(request, response) {
+  response.send(random())
+});
+
+// app.get('/quotes/random', function(request, response) {
+//   response.send(pickFromArray(quotes))
+// });
+
+//my way to pick random object
+const random = () => {
+  const values = Object.values(quotes);
+  const randomObj = values[parseInt(Math.random()*values.length)];
+  return randomObj;
+}
 
 //...END OF YOUR CODE
 
